@@ -1,0 +1,222 @@
+- - - - - - - - GENERAL - - - - - - - - 
+
+
+COMMENTS 
+- # normal one-line comment, there are no multi-line comments 
+- #! Shebang line: allows the script to be executed from the command line, needs to be the first line of the code
+--> #!/usr/bin/env python3 --> env predicts a path to the interpreter
+
+- everything in python is an object, print is nowadays a function, before it was a statement
+- in python the function needs to be defined before you can run it
+- statement is a unit of execution and an expression is a unit of evaluation 
+- expression always returns a value, every line is generally a statement
+- functions and blocks need to be intented correctly, there is no curly brackets
+- in python there are while loops and for loops
+- all functions return a value, None represents the absence of a value
+- class is a definition and an object is an instance of a class
+- self is used as a reference to the object, when the class is used to create one
+--> for example:
+
+meowing = print("meow")
+class animals:
+   def cat(self):
+       print("you are a cat")
+def main():   
+    pablo() = animals            #object pablo was created from the class animals
+    pablo.cat()                  #the method cat was called for the object pablo
+    pablo.meowing                #the variable meowing was called
+   
+PRINT
+- x = "mo"
+- print("Hello, world. {}".format(x))     OR      print(f"Hello, world. {x}")
+
+
+- - - - - - - - TYPES AND VALUES - - - - - - - - 
+
+
+- print(type(x)) will print the type of the value
+- python fundamental built-in types = are int, float, bool, str, NoneType
+- with a string type, single quotes and double quotes are the same, with three quotes you can print a multi-line string
+- Although, if the string has sinqle quotes in it, you need to wrap it around double quotes
+- some string methods = .upper(), .capitalize(), .lower(), .format()
+
+STRING
+- x = "seven {} {}".format(8,9)   
+--> x = "seven {1} {0}".format(8,9)              #this will swap the 8,9(prints seven, 9, 8
+--> x = "seven {1:<9} {0:>09}".format(8,9)       #9 gets eigth spaces to the right and 8 gets eigth zeros to the left(the nine covers the entire number)
+FLOAT
+- if you divide an integer, it might become a float type
+- float types are not good with money, they dont always have enough accuracy. Instead, you can use a decimal module
+- from decimal import *
+- a = decimal(".30")                            #the value will be converted from a string because a floating point isnt accurate
+BOOL
+- x = True      OR        x = False
+- zero and an empty string will evaluate as false, everything else will evaluate as true
+LISTS
+- x = [1, 2, 3, 4, 5]
+- you can change the values by their index --> x[3] = 100
+- tuple is exactly like a list, but it is not mutable. For example, this will create a tuple --> x = (1, 2, 3)
+- x = range(5), will create a range from 0 to 4 range(a, b, c) a=start, b=end, c=step --> range is also not mutable
+- another type is a dictionary that consists of key-value pairs, which is always mutable
+
+--> x = { "one":1, "two":2, "three":3 }
+    for k in x:
+        print("i is {}".format(i))              #this will print the keys of the dictionary, same goes with v (values)
+    for k, v in x.items():
+        print("k: {}, v: {}".format(k,v))       #this will print both the keys and the values
+        
+- tuple will return a typeof tuple, if we ask the typeof a specific item, using its index, we get that items type
+- id(x) returns x:s unique identifier
+- every defined variable or a list has its own id, even if their value is the same. The same values id is the same
+- ifinstance(x, list):    --> will tell you if x is a list  
+- if x is y               --> will tell you if x and y are the same
+        
+- - - - - - - - CONDITIONALS - - - - - - - - 
+
+
+-the if condition can be added to the same line, if you only have one line of code, but this is not recommendable
+IF CONDITION
+if False: 
+   print("it is true")
+elif True:
+   print("it is false")
+else:
+   print("never happens")
+   
+- ternary conditional operator --> 
+hungry = 1
+x = "Feed the bear now!" if hungry else "Do not feed the bear."
+print(X)
+
+- - - - - - - - OPERATORS - - - - - - - - 
+
+
+- pythons operators are +, -, *, /, //, %, **
+- bitwise operators are &, |, ^, <<, >>
+- pythons comparison operators are ==, !=, <, >, <=, >=     logical operators are and, or, not, not in    identity operators are is, is not
+- if y in x,     if y is x,      if y is not x,      if not a,       if a and b
+
+
+- - - - - - - - LOOPS - - - - - - - - 
+
+- python has a while and a for loop
+- the loops have additional controls, which are continue, break and false
+
+secret = "password"
+pw = ""
+max_attempt = 5
+count = 0
+while pw != secret:
+    count += 1
+    if count > max_attempt: break                 #break gets out of the loop
+    if count == 3: continue                       #continue  jumps to the beginning of the loop
+    pw = input("What's the secret word? ")
+else:                                             #else happens if the while loop doesn't evaluate to true
+    auth = True
+print("Authorized" if auth else "Calling the FBI . . .")   
+    
+animals = ("cat", "dog", "bird")
+for pet in animals:
+    print(pet)                                    #prints all the pets in their own rows
+    
+    
+- - - - - - - - FUNCTIONS - - - - - - - - 
+
+
+if __name__ == "__main__": main()
+--> the name variable will return a name of the current module. The main string will tell the program that it is the main file
+--> the function call also allows you to call another function that hasn't been defined above it
+
+- you can pass an argument to a function by adding it inside the functions parentheses
+- if you call a function with too few arguments, it will set the parameters value to 0
+- the argument passed to the function is only a copy of the original argument and can be changed, without changing the original
+
+def kitten(*args):                  #the asterisc before the variable name represents an argument list, args is a traditional name for an argument list
+    if len(args):                   #len() checks the length of its parameter
+        for s in args:
+            print(s)
+    else: print("Meow")
+    
+def kitten(**kwargs):               #two asteriscs represent a keyword arguments, which is like an argument list, only a dictionary
+    if len(kwargs):                 #dict example, kitten(Buffy = "meow", zilla = "mau,)
+        for k in kwargs:
+            print("kitten {} says {}".format(k, kwargs[k]))
+    else:
+        print("meow")
+        
+- you can return a functions type with type(x). If the function doesn't return anything, the type will be Nonetype
+- decorator is a special type of function that returns a wrap function, which is a function that contains another function
+- 
+
+def f1(f):                                             #f3's original form isn't available, only the wrapper is
+    def f2():                                          #prints before the call, f3, after the call
+        print("before the function call")
+        f()
+        print("after the function call")
+    return f2
+f1                                                     #this decorator needs to be directly above the function that it will pass to the decorator function
+    print("this is f3")
+    
+# f3 = f1(f3)                                          #lets comment these and use a shortcut on line 157(decorator)(it needs to be changed in an app)
+# x()
+
+EXAMPLE OF THE DECORATOR
+import time
+
+def elapsed_time(f):
+    def wrapper():
+        t1 = time.time()
+        f()
+        t2 = time.time()
+        print(f'Elapsed time: {(t2 - t1) * 1000} ms')
+    return wrapper
+    
+@elapsed_time
+def big_sum():
+    num_list = []
+    for num in (range(0, 10000)):
+        num_list.append(num)
+    print(f'Big sum: {sum(num_list)}')
+
+def main():
+    big_sum()
+
+if __name__ == '__main__': main()
+
+
+- - - - - - - - STRUCTURED DATA - - - - - - - - 
+
+- In addition of the list types declared earlier --> the set type, unordered set of values --> x = { 1, 2, 3, 4, 5 }
+- their order changes everytime you run it again
+- you can compare sets using the operators by:  set1 - set2
+LISTS
+- you can take a certain amount of data from a list using print(list[1:5:2]), which works exactly like range --> [start, end, step] and returns items from those indexes
+- i = list.index("hemmo") will return the index of hemmo        and        print(list[1]) will print the second value of the list
+.append("moi") adds an item at the end of a list, 
+.insert(0, "moi") adds an item at the wanted index, 
+.remove("moi") removes moi from the list
+.pop(2) removes an item at the end of the list, or at the given index
+del list[0] will remove the first item,  del list[1:3] will remove items through indexes 1 and 2, you can also add a step to this
+print(", ".join(list)) will add commas between the lists items
+- you can make a list off of an old one
+list = range(11)
+list2 = [x * 2 for x in list (add an if here)]             #this will contain all the values from the old list, but duplicated, you can add if statements
+
+DICTIONARY
+- you can print a specific value by print(animals['lion'])     or     change the value by animals['lion'] = 'meow'
+--> if there is not a key lion, the line will add one and add the value to it
+- you can also use print(animals.get("godzilla")) to print a value 
+
+
+
+
+
+   
+
+
+
+
+
+
+
+ 
