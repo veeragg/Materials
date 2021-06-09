@@ -1,3 +1,4 @@
+MORE MATERIAL ON docs.python.org
 - - - - - - - - GENERAL - - - - - - - - 
 
 
@@ -44,6 +45,7 @@ STRING
 - x = "seven {} {}".format(8,9)   
 --> x = "seven {1} {0}".format(8,9)              #this will swap the 8,9(prints seven, 9, 8
 --> x = "seven {1:<9} {0:>09}".format(8,9)       #9 gets eigth spaces to the right and 8 gets eigth zeros to the left(the nine covers the entire number)
+- self[::-1]  --> this will reverse the string
 FLOAT
 - if you divide an integer, it might become a float type
 - float types are not good with money, they dont always have enough accuracy. Instead, you can use a decimal module
@@ -207,13 +209,149 @@ DICTIONARY
 --> if there is not a key lion, the line will add one and add the value to it
 - you can also use print(animals.get("godzilla")) to print a value 
 
+- - - - - - - - CLASSES - - - - - - - - 
+class Duck:
+   sound = "quack"   
+   def quack(self):                          #self is always the first parameter and is a reference to the object created by the class
+       print(self.sound)                     # the . notation sis used to dereference the object
+                      
+SETTERS AND GETTERS              
+For example:
+class Animal:
+    def __init__(self, type, name, sound):
+        self._type = type                              #special function for a classes constructor, first parameter is always self, which makes it a method                             
+        self._name = name                              #the underscore is there to tell other users not to access the variables directly
+                                                       #here we initialize object variables, they don't exist in the class before they are constructed into an object
+    def type(self):
+        return self._type                              #this is a getter that returns the variables value, they should be used to access the variable
 
+def print_animal(o):
+    if not isinstance(o, Animal):
+        raise TypeError('print_animal(): requires an Animal')
+    print('The {} is named "{}".'.format(o.type(), o.name()))                        #the variables are accessed through their getters
 
+def main():
+    a0 = Animal('kitten', 'fluffy'                     #here the object is created by calling the class as if it were a function
+    print_animal(a0)
+    print_animal(Animal('velociraptor', 'veronica'))
+if __name__ == '__main__': main()
 
+-if the functions first parameter is a self, it is a method instead, you dont have to provide it when calling the function, it will be filled automatically
+-object variables dont exist in the class, only when they are called
+-the leading underscore indicates a private variable
+-you shouldn't use mutable information inside of a class
+- Above, you could also use a setter/getter instead of only the setter
+-->  def type(self, t = None):                     #this function acts as a getter and a setter, the t is set to None
+        if t: self._type = t                       #if the value is none, the if will fail and return the type
+        return self._type
 
+INHERITANCE
+
+class Animal:
+    def __init__(self, **kwargs):
+        if 'type' in kwargs: self._type = kwargs['type']
+    def type(self, t = None):
+        if t: self._type = t                       #this attempts to return a value, if it doesn't exist, it returns none instead
+        try: return self.type
+        except AttributeError; return None
+    def __str__(self):
+        return f'The type is {self.type()}'
+        
+ class Kitten(Animal):                             #this class inherits the parentclass (animal)
+    def __init__(self, **kwargs):
+        self._type = 'kitten'
+        it 'type' in kwargs: del kwargs ['type']   #here we check if there is a type in kwargs, if yes it is deleted
+        super().__init__(**kwargs)                 #super calls the parent class
+ def main():
+     a0 = Kitten(name = 'pablo')                   #you can create another function, for example, eats, in the class kitten and call it with the wanted object
+     print(a0)                                     # --> a0.eats("something) 
+
+ITERATORS
+- a class that provides a sequence of items
+class inclusive_range:
+    def __init__(self, *args):        #the constructors sets up all the variables and checks how many there are
+        numargs = len(args)
+        self._start = 0
+        self._step = 1
+        
+        if numargs < 1:
+            raise TypeError(f'expected at least 1 argument, got {numargs}')
+        elif numargs == 1:
+            self._stop = args[0]
+        elif numargs == 2:
+            (self._start, self._stop) = args
+        elif numargs == 3:
+            (self._start, self._stop, self._step) = args
+        else: raise TypeError(f'expected at most 3 arguments, got {numargs}')   #here the constructor makes the items print as if they were in the method range
+        
+        self._next = self._start
    
+    def __iter__(self):                       #a special iterator method, it identifies the object in question as an iterator object
+        return self
+
+    def __next__(self):                       #the iteration, for example a for loop for look for this n order to treat the function as an iteration
+        if self._next > self._stop:
+            raise StopIteration
+        else:
+            _r = self._next                   #if the iteration exception is not raised, here we increment and then return the value
+            self._next += self._step
+            return _r
+def main():
+    for n in inclusive_range(25):
+        print(n, end=' ')
+    print()
+if __name__ == '__main__': main()
+
+- - - - - - - - EXCEPTIONS- - - - - - - - 
+
+- you can test your code and see where your errors are using exceptions
+-there are meny exceptions, for example ZeroDivisionError
+- raise TypeError can be used to raise your own errors
+try:
+    int x = "foo"
+except ValueError:
+    print("this is an error")       #now you can see if the error is on this line, instead of the error, you get your own notification
+except:
+    print("something")              #you dont have to specify the error type if you dont know it
+                                    #you can get more information about the error by using print(f'unknown error: {sys.exc_info()}')
 
 
+- - - - - - - - STRING OBJECTS - - - - - - - - 
+
+- upper() capitalizes the firs letter, swapcase() swaps upper and lowercase letters
+- casefold() lowers all the letters and removes the special letters, lower() just lowers them
+x = 42 * 747 * 100
+print('the number is {:,}'.format(x).replace(',','.')} #this replaces thoudsands by the commas and then replaces it with dots
+--> {:.3f} this specifies three decimal points {:x}returns hexadecimal {:o}returns octal  {:b}returns binary
+
+- you can arrange strings by using three single quotes
+s = "this is a string"
+l = s.split()                      #returns thisisastring
+s2 =":".join(l)                    #returns this:is:a:string
+
+- - - - - - - - FILE I/O - - - - - - - - 
+
+def main():
+    f = open('lines.txt', 'r')       #opens the file and returns a file object, which is an iterator
+    for line in f:                   #the loop goes through the file and prints every line on its own row
+        print(line.rstrip())         #this method removes all of the whitespace at the end of the line, and all the empty lines
+
+- by default, open opens the line in read mode, although you can give it an additional argument
+--> r opens the file in read mode, w in write mode. In write mode the file is emptied and the writing starts at the beginning of the file
+--> a is also a write mode, but it doesnt empty the file, instead starts at the end of the file
+--> 'r + t' opens a file in read mode in text mode, b stands for binary file
+
+def main():
+    infile = open('lines.txt', 'rt')            #we open one file for reading and another for writing
+    outfile = open('lines-copy.txt', 'wt')
+    for line in infile:
+        print(line.rstrip(), file=outfile)
+        print('.', end='', flush=True)          #this prevents the file from printing a new line after each dot
+    outfile.close()                             #the file is closed manually, so that it doesnt close when the function ends and data isnt lost
+    print('\ndone.')
+if __name__ == '__main__': main()
+
+KAPPALEET 13-15 JÄLJELLÄ
 
 
 
