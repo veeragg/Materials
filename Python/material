@@ -1,1 +1,373 @@
+MORE MATERIAL ON docs.python.org
+- - - - - - - - GENERAL - - - - - - - - 
 
+
+COMMENTS 
+- # normal one-line comment, there are no multi-line comments 
+- #! Shebang line: allows the script to be executed from the command line, needs to be the first line of the code
+--> #!/usr/bin/env python3 --> env predicts a path to the interpreter
+
+- everything in python is an object, print is nowadays a function, before it was a statement
+- in python the function needs to be defined before you can run it
+- statement is a unit of execution and an expression is a unit of evaluation 
+- expression always returns a value, every line is generally a statement
+- functions and blocks need to be intented correctly, there is no curly brackets
+- in python there are while loops and for loops
+- all functions return a value, None represents the absence of a value
+- class is a definition and an object is an instance of a class
+- self is used as a reference to the object, when the class is used to create one
+--> for example:
+
+meowing = print("meow")
+class animals:
+   def cat(self):
+       print("you are a cat")
+def main():   
+    pablo() = animals            #object pablo was created from the class animals
+    pablo.cat()                  #the method cat was called for the object pablo
+    pablo.meowing                #the variable meowing was called
+   
+PRINT
+- x = "mo"
+- print("Hello, world. {}".format(x))     OR      print(f"Hello, world. {x}")
+
+
+- - - - - - - - TYPES AND VALUES - - - - - - - - 
+
+
+- print(type(x)) will print the type of the value
+- python fundamental built-in types = are int, float, bool, str, NoneType
+- with a string type, single quotes and double quotes are the same, with three quotes you can print a multi-line string
+- Although, if the string has sinqle quotes in it, you need to wrap it around double quotes
+- some string methods = .upper(), .capitalize(), .lower(), .format()
+
+STRING
+- x = "seven {} {}".format(8,9)   
+--> x = "seven {1} {0}".format(8,9)              #this will swap the 8,9(prints seven, 9, 8
+--> x = "seven {1:<9} {0:>09}".format(8,9)       #9 gets eigth spaces to the right and 8 gets eigth zeros to the left(the nine covers the entire number)
+- self[::-1]  --> this will reverse the string
+FLOAT
+- if you divide an integer, it might become a float type
+- float types are not good with money, they dont always have enough accuracy. Instead, you can use a decimal module
+- from decimal import *
+- a = decimal(".30")                            #the value will be converted from a string because a floating point isnt accurate
+BOOL
+- x = True      OR        x = False
+- zero and an empty string will evaluate as false, everything else will evaluate as true
+LISTS
+- x = [1, 2, 3, 4, 5]
+- you can change the values by their index --> x[3] = 100
+- tuple is exactly like a list, but it is not mutable. For example, this will create a tuple --> x = (1, 2, 3)
+- x = range(5), will create a range from 0 to 4 range(a, b, c) a=start, b=end, c=step --> range is also not mutable
+- another type is a dictionary that consists of key-value pairs, which is always mutable
+
+--> x = { "one":1, "two":2, "three":3 }
+    for k in x:
+        print("i is {}".format(i))              #this will print the keys of the dictionary, same goes with v (values)
+    for k, v in x.items():
+        print("k: {}, v: {}".format(k,v))       #this will print both the keys and the values
+        
+- tuple will return a typeof tuple, if we ask the typeof a specific item, using its index, we get that items type
+- id(x) returns x:s unique identifier
+- every defined variable or a list has its own id, even if their value is the same. The same values id is the same
+- ifinstance(x, list):    --> will tell you if x is a list  
+- if x is y               --> will tell you if x and y are the same
+        
+- - - - - - - - CONDITIONALS - - - - - - - - 
+
+
+-the if condition can be added to the same line, if you only have one line of code, but this is not recommendable
+IF CONDITION
+if False: 
+   print("it is true")
+elif True:
+   print("it is false")
+else:
+   print("never happens")
+   
+- ternary conditional operator --> 
+hungry = 1
+x = "Feed the bear now!" if hungry else "Do not feed the bear."
+print(X)
+
+- - - - - - - - OPERATORS - - - - - - - - 
+
+
+- pythons operators are +, -, *, /, //, %, **
+- bitwise operators are &, |, ^, <<, >>
+- pythons comparison operators are ==, !=, <, >, <=, >=     logical operators are and, or, not, not in    identity operators are is, is not
+- if y in x,     if y is x,      if y is not x,      if not a,       if a and b
+
+
+- - - - - - - - LOOPS - - - - - - - - 
+
+- python has a while and a for loop
+- the loops have additional controls, which are continue, break and false
+
+secret = "password"
+pw = ""
+max_attempt = 5
+count = 0
+while pw != secret:
+    count += 1
+    if count > max_attempt: break                 #break gets out of the loop
+    if count == 3: continue                       #continue  jumps to the beginning of the loop
+    pw = input("What's the secret word? ")
+else:                                             #else happens if the while loop doesn't evaluate to true
+    auth = True
+print("Authorized" if auth else "Calling the FBI . . .")   
+    
+animals = ("cat", "dog", "bird")
+for pet in animals:
+    print(pet)                                    #prints all the pets in their own rows
+    
+    
+- - - - - - - - FUNCTIONS - - - - - - - - 
+
+
+if __name__ == "__main__": main()
+--> the name variable will return a name of the current module. The main string will tell the program that it is the main file
+--> the function call also allows you to call another function that hasn't been defined above it
+
+- you can pass an argument to a function by adding it inside the functions parentheses
+- if you call a function with too few arguments, it will set the parameters value to 0
+- the argument passed to the function is only a copy of the original argument and can be changed, without changing the original
+
+def kitten(*args):                  #the asterisc before the variable name represents an argument list, args is a traditional name for an argument list
+    if len(args):                   #len() checks the length of its parameter
+        for s in args:
+            print(s)
+    else: print("Meow")
+    
+def kitten(**kwargs):               #two asteriscs represent a keyword arguments, which is like an argument list, only a dictionary
+    if len(kwargs):                 #dict example, kitten(Buffy = "meow", zilla = "mau,)
+        for k in kwargs:
+            print("kitten {} says {}".format(k, kwargs[k]))
+    else:
+        print("meow")
+        
+- you can return a functions type with type(x). If the function doesn't return anything, the type will be Nonetype
+- decorator is a special type of function that returns a wrap function, which is a function that contains another function
+- 
+
+def f1(f):                                             #f3's original form isn't available, only the wrapper is
+    def f2():                                          #prints before the call, f3, after the call
+        print("before the function call")
+        f()
+        print("after the function call")
+    return f2
+f1                                                     #this decorator needs to be directly above the function that it will pass to the decorator function
+    print("this is f3")
+    
+# f3 = f1(f3)                                          #lets comment these and use a shortcut on line 157(decorator)(it needs to be changed in an app)
+# x()
+
+EXAMPLE OF THE DECORATOR
+import time
+
+def elapsed_time(f):
+    def wrapper():
+        t1 = time.time()
+        f()
+        t2 = time.time()
+        print(f'Elapsed time: {(t2 - t1) * 1000} ms')
+    return wrapper
+    
+@elapsed_time
+def big_sum():
+    num_list = []
+    for num in (range(0, 10000)):
+        num_list.append(num)
+    print(f'Big sum: {sum(num_list)}')
+
+def main():
+    big_sum()
+
+if __name__ == '__main__': main()
+
+
+- - - - - - - - STRUCTURED DATA - - - - - - - - 
+
+- In addition of the list types declared earlier --> the set type, unordered set of values --> x = { 1, 2, 3, 4, 5 }
+- their order changes everytime you run it again
+- you can compare sets using the operators by:  set1 - set2
+LISTS
+- you can take a certain amount of data from a list using print(list[1:5:2]), which works exactly like range --> [start, end, step] and returns items from those indexes
+- i = list.index("hemmo") will return the index of hemmo        and        print(list[1]) will print the second value of the list
+.append("moi") adds an item at the end of a list, 
+.insert(0, "moi") adds an item at the wanted index, 
+.remove("moi") removes moi from the list
+.pop(2) removes an item at the end of the list, or at the given index
+del list[0] will remove the first item,  del list[1:3] will remove items through indexes 1 and 2, you can also add a step to this
+print(", ".join(list)) will add commas between the lists items
+- you can make a list off of an old one
+list = range(11)
+list2 = [x * 2 for x in list (add an if here)]             #this will contain all the values from the old list, but duplicated, you can add if statements
+
+DICTIONARY
+- you can print a specific value by print(animals['lion'])     or     change the value by animals['lion'] = 'meow'
+--> if there is not a key lion, the line will add one and add the value to it
+- you can also use print(animals.get("godzilla")) to print a value 
+
+- - - - - - - - CLASSES - - - - - - - - 
+class Duck:
+   sound = "quack"   
+   def quack(self):                          #self is always the first parameter and is a reference to the object created by the class
+       print(self.sound)                     # the . notation sis used to dereference the object
+                      
+SETTERS AND GETTERS              
+For example:
+class Animal:
+    def __init__(self, type, name, sound):
+        self._type = type                              #special function for a classes constructor, first parameter is always self, which makes it a method                             
+        self._name = name                              #the underscore is there to tell other users not to access the variables directly
+                                                       #here we initialize object variables, they don't exist in the class before they are constructed into an object
+    def type(self):
+        return self._type                              #this is a getter that returns the variables value, they should be used to access the variable
+
+def print_animal(o):
+    if not isinstance(o, Animal):
+        raise TypeError('print_animal(): requires an Animal')
+    print('The {} is named "{}".'.format(o.type(), o.name()))                        #the variables are accessed through their getters
+
+def main():
+    a0 = Animal('kitten', 'fluffy'                     #here the object is created by calling the class as if it were a function
+    print_animal(a0)
+    print_animal(Animal('velociraptor', 'veronica'))
+if __name__ == '__main__': main()
+
+-if the functions first parameter is a self, it is a method instead, you dont have to provide it when calling the function, it will be filled automatically
+-object variables dont exist in the class, only when they are called
+-the leading underscore indicates a private variable
+-you shouldn't use mutable information inside of a class
+- Above, you could also use a setter/getter instead of only the setter
+-->  def type(self, t = None):                     #this function acts as a getter and a setter, the t is set to None
+        if t: self._type = t                       #if the value is none, the if will fail and return the type
+        return self._type
+
+INHERITANCE
+
+class Animal:
+    def __init__(self, **kwargs):
+        if 'type' in kwargs: self._type = kwargs['type']
+    def type(self, t = None):
+        if t: self._type = t                       #this attempts to return a value, if it doesn't exist, it returns none instead
+        try: return self.type
+        except AttributeError; return None
+    def __str__(self):
+        return f'The type is {self.type()}'
+        
+ class Kitten(Animal):                             #this class inherits the parentclass (animal)
+    def __init__(self, **kwargs):
+        self._type = 'kitten'
+        it 'type' in kwargs: del kwargs ['type']   #here we check if there is a type in kwargs, if yes it is deleted
+        super().__init__(**kwargs)                 #super calls the parent class
+ def main():
+     a0 = Kitten(name = 'pablo')                   #you can create another function, for example, eats, in the class kitten and call it with the wanted object
+     print(a0)                                     # --> a0.eats("something) 
+
+ITERATORS
+- a class that provides a sequence of items
+class inclusive_range:
+    def __init__(self, *args):        #the constructors sets up all the variables and checks how many there are
+        numargs = len(args)
+        self._start = 0
+        self._step = 1
+        
+        if numargs < 1:
+            raise TypeError(f'expected at least 1 argument, got {numargs}')
+        elif numargs == 1:
+            self._stop = args[0]
+        elif numargs == 2:
+            (self._start, self._stop) = args
+        elif numargs == 3:
+            (self._start, self._stop, self._step) = args
+        else: raise TypeError(f'expected at most 3 arguments, got {numargs}')   #here the constructor makes the items print as if they were in the method range
+        
+        self._next = self._start
+   
+    def __iter__(self):                       #a special iterator method, it identifies the object in question as an iterator object
+        return self
+
+    def __next__(self):                       #the iteration, for example a for loop for look for this n order to treat the function as an iteration
+        if self._next > self._stop:
+            raise StopIteration
+        else:
+            _r = self._next                   #if the iteration exception is not raised, here we increment and then return the value
+            self._next += self._step
+            return _r
+def main():
+    for n in inclusive_range(25):
+        print(n, end=' ')
+    print()
+if __name__ == '__main__': main()
+
+- - - - - - - - EXCEPTIONS- - - - - - - - 
+
+- you can test your code and see where your errors are using exceptions
+-there are meny exceptions, for example ZeroDivisionError
+- raise TypeError can be used to raise your own errors
+try:
+    int x = "foo"
+except ValueError:
+    print("this is an error")       #now you can see if the error is on this line, instead of the error, you get your own notification
+except:
+    print("something")              #you dont have to specify the error type if you dont know it
+                                    #you can get more information about the error by using print(f'unknown error: {sys.exc_info()}')
+
+
+- - - - - - - - STRING OBJECTS - - - - - - - - 
+
+- upper() capitalizes the firs letter, swapcase() swaps upper and lowercase letters
+- casefold() lowers all the letters and removes the special letters, lower() just lowers them
+x = 42 * 747 * 100
+print('the number is {:,}'.format(x).replace(',','.')} #this replaces thoudsands by the commas and then replaces it with dots
+--> {:.3f} this specifies three decimal points {:x}returns hexadecimal {:o}returns octal  {:b}returns binary
+
+- you can arrange strings by using three single quotes
+s = "this is a string"
+l = s.split()                      #returns thisisastring
+s2 =":".join(l)                    #returns this:is:a:string
+
+- - - - - - - - FILE I/O - - - - - - - - 
+
+def main():
+    f = open('lines.txt', 'r')       #opens the file and returns a file object, which is an iterator
+    for line in f:                   #the loop goes through the file and prints every line on its own row
+        print(line.rstrip())         #this method removes all of the whitespace at the end of the line, and all the empty lines
+
+- by default, open opens the line in read mode, although you can give it an additional argument
+--> r opens the file in read mode, w in write mode. In write mode the file is emptied and the writing starts at the beginning of the file
+--> a is also a write mode, but it doesnt empty the file, instead starts at the end of the file
+--> 'r + t' opens a file in read mode in text mode, b stands for binary file
+
+def main():
+    infile = open('lines.txt', 'rt')            #we open one file for reading and another for writing
+    outfile = open('lines-copy.txt', 'wt')
+    for line in infile:
+        print(line.rstrip(), file=outfile)
+        print('.', end='', flush=True)          #this prevents the file from printing a new line after each dot
+    outfile.close()                             #the file is closed manually, so that it doesnt close when the function ends and data isnt lost
+    print('\ndone.')
+if __name__ == '__main__': main()
+
+
+- - - - - - - - BUILT-IN-FUNCTIONS- - - - - - - - 
+
+- Python has another number type, complex, which provides two dimentional numbers 
+- For example: x = (x, 73) or y = x + 15j
+- repr is a string method that returns the best representation of that string 
+- ascii is basically the same method than repr but it only returns ascii characters. So emojies etc. wont work.
+- y = list(reversed(x)) you can get a reversed list
+- y = any(x) returns true if any of the values is true y = all(x) is true if all of the values are true
+- y = sum(x) will sum up all the numbers on the list
+- z = zip(x,y) will return two values in the same item as an iterator
+
+-Python offers a lot of modules, which can be found in python.org 
+
+
+- - - - - - - - DATABASES - - - - - - - - 
+
+-Python db API is an interface for many database systems
+- sql lite is compatible with python
+- in the folder, there is a database example
