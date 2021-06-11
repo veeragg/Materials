@@ -1,1 +1,120 @@
 
+- - - - - - - - - - - - - - - - - - - -INTRODUCTION- - - - - - - - - - - - - - - - - - - 
+
+- console.log() prints to the console
+- Math.random imports a library math and returns a random number
+- Math.floor() returns the largest integer less than or equal to the given number
+- string.length() returns the length of the string
+- there are three variable types: var, was used pre ES-6, let, a variable that can be reassigned, const, an immutable value
+- .toUpperCase() capitalizes all the letters, .startsWith() returns all the values starting with that letter
+- typeof cat will reveal the type of the cat
+
+- template literals are strings that allow embedded expressions, they use backticks instead of quotes
+- For example: 
+let name = "Pablo";
+console.log(`Hello, ${name}`);
+
+
+- - - - - - - - - - - - - - - - - - - -CONDITIONALS- - - - - - - - - - - - - - - - - - -
+
+- Example of the if statements syntax: 
+const isTaskCompleted = false;
+if (isTaskCompleted) {
+  console.log('Task completed');
+} else {
+  console.log('Task incomplete');}
+
+- You can invert a boolean value by placing ! before the variable
+- In Javascript, you have to use three equal marks, because two don't compare the entire string === or !==
+
+-Example of the switch statement:
+const food = 'salad';
+switch (food) {
+  case 'pizza':
+    console.log('A delicious pie 🍕');
+    break;
+  default:                                          # default was added in case none of the cases will evaluate as true
+    console.log('Enjoy your meal');}
+    
+- You can also use ternary operator when choosing between two decisions. It will make the syntax more compact
+- after the ? operator, if the condition evaluates as true, the first expression will be executed, otherwise the second one
+- For example:
+ let day = "Monday"      
+ day === "Monday ? console.log('nukkumaan') : console.log('kaliaaa');
+ 
+ let defaultName;
+if (username) {                                     #this is another simple way to mak a conditional statement, it checks if defaulName exists
+  defaultName = username;                         
+} else {
+  defaultName = 'Stranger';}
+- or you can simplify it :      let defaultName = username || 'Stranger';
+
+- - - - - - - - - - - - - - - - - - - -FUNCTIONS- - - - - - - - - - - - - - - - - - -
+
+- functions can be declared in two ways, either by using the function keyword or by constructiong an arrow function
+- if an arrow function has only one parameter, it doesnt need parentheses around it
+- if the function has only one line of code in it, you can place it in the same line
+- For example, const day = "friday" => console.log("juuan kaliaa");
+- there are also anonymous functions that do not have the naming property
+
+const dog = function() {       OR          const sum = (firstParam, secondParam) => {     OR        const dog = function() {
+return 'woof';  }                          return firstParam + secondParam; }                       return 'woof'; }
+
+
+- - - - - - - - - - - - - - - - - - - -ARRAYS- - - - - - - - - - - - - - - - - - -
+
+- const myArray = [1,2,3]
+- .push() mutates the array by adding a new item to the bottom of the list
+- .pop() deletes the last item
+- the elements can be mutated by accessing them by their index myArray[0] = 100            # eturns [100,2,3]
+- Arrays can contain other arrays inside of them, you can access them just like any other item
+
+const nestedArr = [[1], [2, 3]];
+console.log(nestedArr[1]);
+
+
+- - - - - - - - - - - - - - - - - - - -LOOPS - - - - - - - - - - - - - - - - - -
+
+- Javascript has a for loop, while loop and a do-while loop 
+-break is used to break out of the loop 
+
+for (let i = items.length - 1; i >= 0; i -= 1) {         OR       while(i < 5){
+  console.log(`${i}. ${items[i]}`);                               console.log(i);
+}                                                                 i++; }
+
+- Lets add an example of a nested loop:
+const myArray = [6, 19, 20];                                      # while executing, the entire inner loop will run comparing it to the item from the 
+const yourArray = [19, 81, 2];                                    # outer loop. This will occur at every outer loops item
+for (let i = 0; i < myArray.length; i++) {
+  for (let j = 0; j < yourArray.length; j++) {
+    if (myArray[i] === yourArray[j]) {
+      console.log('Both loops have the number: ' + yourArray[j])  }}};
+
+
+- - - - - - - - - - - - - - - - - - - -REQUESTS- - - - - - - - - - - - - - - - - -
+
+- the most common http requests are get, post, put and delete
+- JavaScript has an object xhr, which can be used to create requests
+
+const xhr = new XMLHttpRequest();                                  //its common to name the object handling requests xhr
+const url = 'https://api-to-call.com/endpoint';
+xhr.responseType = 'json';                                         //lets set the response type to json
+xhr.onreadystatechange = () => {                                   //this function checks if the request has already finished
+  if (xhr.readyState === XMLHttpRequest.DONE){
+    return xhr.response;                                           //returns xhrs property
+  }
+}
+xhr.open('GET',url);                                               //open creates a new request 
+xhr.send();
+
+-
+
+
+
+
+
+
+
+
+
+
