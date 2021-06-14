@@ -32,7 +32,10 @@ public class Store {
   
   - - - - - - - - - - METHODS - - - - - - - - - - - -
   
-  - 
+  - In java, you can create your own methods, just like constructors
+  - using different parameters, methods can be overloaded too
+  
+  
   
   
   
