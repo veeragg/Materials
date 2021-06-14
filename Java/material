@@ -8,3 +8,23 @@
 
 
 - - - - - - - - - - CLASSES - - - - - - - - - - - -
+
+- the public keyword is an access level mofidier, which allows other classes to interact with it
+- the constructor needs to be named like the class itself
+- you can create it without or with parameters
+- you can create an instance of that class by: Class newinstance = new Class();
+- while creating an object, the constructor sets its initial state, which is made up of data representing the objects characteristics.
+- you can overload the constructor, meaning that you can create several constructors with different parameters 
+- A formal parameter specifies the type and name of data that can be passed into a method
+- An actual parameter, or argument, refers to the value being passed during a method call
+- the formal parameter will be initialized with the actual parameters value
+- you can also set values for variables in the class's body
+- the dot notation is used to access the instances
+
+public class Store {
+  String productType;                   // instance fields
+ 
+  public Store(String product) {        //constructor method 
+    productType = product;              // a way to initialize a formal parameter
+  }
+  Store cookieShop = new Store("cookies"); //lets create an object
