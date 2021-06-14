@@ -28,3 +28,11 @@ public class Store {
     productType = product;              // a way to initialize a formal parameter
   }
   Store cookieShop = new Store("cookies"); //lets create an object
+  
+  
+  - - - - - - - - - - METHODS - - - - - - - - - - - -
+  
+  - 
+  
+  
+  
