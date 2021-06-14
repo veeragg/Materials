@@ -4,4 +4,7 @@
 - String, on the other hand is a literal or an object
 - java has also escape sequeces, that have alternative uses in print statements:
 --> \" allows you to print " character, \\ will print one backslash, \n will continue printing on another line
+- If you want a value that cannot be changet later on, you need to initialize it with a keyword final.
 
+
+- - - - - - - - - - CLASSES - - - - - - - - - - - -
