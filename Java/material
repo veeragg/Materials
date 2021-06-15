@@ -40,10 +40,11 @@ public class Store {
      public String toString(){
        return "This is a " + color + " car!";
    }
+   - A method that returns an array is constructed like this: public String[] IReturnArrays(){
+   }
    
      
-     
-  - - - - - - - - - - CONDITIONALS - - - - - - - - - - - -
+    - - - - - - - - - - CONDITIONALS - - - - - - - - - - - -
   
   - the most simple conditionl statement in java is the if-else statement
   - you can check multiple conditions by creating nested loops or using the && operator
@@ -59,3 +60,15 @@ switch (course) {
   default:
     System.out.println("Course not found");
 }
+
+
+  - - - - - - - - - - ARRAYS - - - - - - - - - - - -
+  
+  - you can create an array by defining the datatype it holds, adding brackets and the name of the array:
+  - For example: int[] prices = {2,4,5,1}
+  - import java.util.Arrays; has the toString method for importing 
+  - 
+  
+  
+  
+
