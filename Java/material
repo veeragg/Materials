@@ -33,64 +33,29 @@ public class Store {
   - - - - - - - - - - METHODS - - - - - - - - - - - -
   
   - In java, you can create your own methods, just like constructors
- 
   - using different parameters, methods can be overloaded too
+  - Because objects are reflective parameters, sometimes they can return their memory place instead of the value it contains
+  - Instead, we can add a toString() method that will print the wanted string. 
+  For example: 
+     public String toString(){
+       return "This is a " + color + " car!";
+   }
+   
+     
+     
+  - - - - - - - - - - CONDITIONALS - - - - - - - - - - - -
   
-  
-  
-  public class SavingsAccount {
-  
-  int balance;
-  
-  public SavingsAccount(int initialBalance){
-    balance = initialBalance;
-  }
-  
-  public void checkBalance(){
-    System.out.println("Hello!");
-    System.out.println("Your balance is "+balance);
-  }
-  
-  public void deposit(int amountToDeposit){
-    balance = amountToDeposit + balance;
-    System.out.println("You just deposited " + amountToDeposit);
-  }
-  
-  public int withdraw(int amountToWithdraw){
-    balance = balance - amountToWithdraw;
-    System.out.println("You just withdrew " + amountToWithdraw);
-    return amountToWithdraw;
-  }
-  
-  public String toString(){
-    return "This is a savings account with " + balance + " saved.";
-  }
-  
-  public static void main(String[] args){
-    SavingsAccount savings = new SavingsAccount(2000);
-    
-    //Check balance:
-    savings.checkBalance();
-    
-    //Withdrawing:
-    savings.withdraw(300);
-    
-    //Check balance:
-    savings.checkBalance();
-    
-    //Deposit:
-    savings.deposit(600);
-    
-    //Check balance:
-    savings.checkBalance();
-    
-    //Deposit:
-    savings.deposit(600);
-    
-    //Check balance:
-    savings.checkBalance();
-    
-    System.out.println(savings);
-  }       
+  - the most simple conditionl statement in java is the if-else statement
+  - you can check multiple conditions by creating nested loops or using the && operator
+  - the second conditional statement is the switch statement.
+  - For example: 
+  String course = "History";
+ 
+switch (course) { 
+  case "Algebra":        // Enroll in Algebra
+    break; 
+  case "Biology":       // Enroll in Biology
+    break;
+  default:
+    System.out.println("Course not found");
 }
-
