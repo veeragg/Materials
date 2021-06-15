@@ -67,8 +67,12 @@ switch (course) {
   - you can create an array by defining the datatype it holds, adding brackets and the name of the array:
   - For example: int[] prices = {2,4,5,1}
   - import java.util.Arrays; has the toString method for importing 
-  - 
-  
+  - You can also create empty arrays by defining their sizes. Note that the size cannot be changed afterwards. 
+--> int[] my_ages = new int[5]; 
+- the new keyword initializes all of the values as 0. In string the value would be null.
+- the classic constucor: main(String[] args) 
+--> the string[] represents a normal string and the args represents the arguments passed in from the terminal to that string
+- example of comparing the string:     else if(args[0].equals("Human"))
   
   
 
