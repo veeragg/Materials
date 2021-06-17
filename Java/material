@@ -75,4 +75,147 @@ switch (course) {
 - example of comparing the string:     else if(args[0].equals("Human"))
   
   
+    - - - - - - - - - - STRING METHODS - - - - - - - - - - - -
+    
+    - java has a class that contains various string methods
+    - .length() returns the length of the string,
+    - concat() creates a new string by adding another string to the first strings end
+    - equals() compares if the strings are the same, equalsIgnoreCase does the same but doesnt consider upper or lower case letters
+    - .indexOf("a") will return the index of the letter a
+    - .charAt(1) returns the char at the index 2
+    - .substring(2,10) will return a new string between the old strings indexes 2 and 10
+  
+  
+- - - - - - - - - - ENCAPSULATION AND STATIC METHODS - - - - - - - - - - - -
+      
+- private and public are keywords that can be used to control the accessibility of variables and classes
+- classes can be private too but it is very uncommon, they are usually set to public
+- you can create an object from a class by --> ClassName objectName = new Classname(variables);
+- getters are accessor methods that are used to access the values of private variables
+- setters are mutator mmethods that are used to change the values of private variables
+-
+-   public int getBalance(){                 //example getter
+    return balance; }
+  
+  public void setBalance(int newBalance){    //example setter
+    balance = newBalance; }
+    
+- an instance variable is a variable that contains a value for an object, local variable is a variable declared in a class
+- if these variables have the same name, you can access the instance variable by using the this. keyword
+- this always refers to the object we are using
+- you can use this as a parameter when you are calling a method with this and you want to give the object as the methods parameter
+-->   this.pairWithOtherComputer(this);  //here the object that called this function will also be its variable
+ 
+- public void resetSettings(){               // here we havent create an object so we use this to access the other methods
+    this.setBrightness(0);                   // when you use this, it will be replaced by the object that calls the resetSettings function
+    this.setVolume(0); }
+    
+- private methods can also be helpers, for example one public method can contain many smaller private functions that all get called at the same time
+- helpers are used by larger methods
+
+
+- - - - - - - - - - THE MATH CLASS - - - - - - - - - - - -
+
+- using non-static members you need to create an object of that class before you can call its methods
+- with static methods you can just call them by the dot notation or import the package and using the function name
+
+- the math package can be imported by --> import static java.lang.Math.*;
+- int abs(x) returns the absolute value of x
+- int pow(int base, int exponent) returns the first parameter in the second parameters exponent
+- int b = (int)(Math.random() * 10); will return an int typed number between 0 and 9, whithout the *10 it would return between 0.0 and 1.0 by default
+- you can set the range by using this alogrithm --> (Math.random() * (maxValue - minValue + 1)) + minValue
+- for example, int d = (int)(Math.random() * 11 ) + 10; returns a number between 10 and 20 
+- all of javas mathematical methods can be found here -->  https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html
+
+
+- - - - - - - - - - STATIC METHODS AND VARIABLES - - - - - - - - - - - -
+
+- Static variables belong to the whole class and are the same for all objects 
+- they can be created by    -->   public static String genus = "Canis";
+- Integer.MAX_VALUE is a static method that returns the largest possible integer
+
+- static methods can be created like any other methods, just add the static keyword
+    --> public static void myFirstStaticMethod(){ }
+    
+- you can also declare setters and getters for these methods, use the static keyword in them too
+- static methods cant access non-static instance variables, or the this keyword! 
+
+
+
+- - - - - - - - - - INHERITANCE - - - - - - - - - - - -
+
+- You can set a child class to inherit the parent class by adding the keyword extends
+- class Triangle extends Shape { } --> here class triangle will inherit the shape class
+
+-  Triangle() {                          Triangle() {
+    this.numSides = 3;}                   super(3);}
+- these codes represent a subclass triangle that is calling it parentclass's constructor, they do the exactly same thing
+- you can modify the parameters in the parent class's constructor
+- you can also call the parent class's other methods by using the super keyword, just use the dot notation 
+--> super.parentMethod();
+
+- If you add a final keyword before the class member, child classes cannot modify it
+- By using a wrapper @override, you can rewrite the parent class's methods 
+
+
+- - - - - - - - - - DEBUGGING - - - - - - - - - - - -
+
+- syntax errors are grammar errors and are the easiest to fix 
+- run-time errors are errors that occur while the program is trying to execute
+- java uses exceptions to describe the errors
+- heres how you can try to handle errors -->
+
+try {                                    // defines a block being tested for errors while executing
+} catch (NullPointerException e) {       // will be executed if an error occurs
+ 
+  System.err.println("NullPointerException: " + e.getMessage()); }    // this will print to the standard error and in red 
+
+- logic errors are happening when the code is running, but it doesn't produce the wanted result
+
+
+
+- - - - - - - - - - TWO DIMENSIONAL ARRYAS - - - - - - - - - - - -
+
+- 2D arrays are useful for storing and mapping data, although they can not be changed after they have been initialized
+
+- int[][] intArray2;                          // a two dimensional array created
+intArray2 = new int[3][5];                    // initializing the array with 3 rows and 5 columns
+OR int intArray2[][] = new int[3][5];
+
+double[][] doubleValues = {{1.5, 2.6, 3.7}, {7.5, 6.4, 5.3}, {9.8,  8.7, 7.6}, {3.6, 5.7, 7.8}};         //new 2D array created and initialized 
+String[][] stringValues;
+stringValues = new String[][] {{"working", "with"}, {"2D", "arrays"}, {"is", "fun"}};                    //new 2D array created and initialized
+
+- datatype variableName = existing2DArray[row][column];    //here is how you can access a specific value in the array
+- twoDArray[1][3] = 150;                                   // changing a value is done similarly
+
+- if you want to know the heigth of a matrix array         --> matrixArray.length();
+- and the width of the array                               --> matrixArray[0].length();
+- though, in some cases the rows can have different widths 
+- loops can be used to iterate through both of the arrays
+
+-for example,
+		for(int i=0; i<intMatrix.length; i++) {
+			for(int j = 0; j < intMatrix[i].length; j++) } //the inner loop will iterate fully for each element of the outer loop
+      
+      int i = 0, j=0;
+while(i<charData.length) {
+    j = 0;
+    while(j<charData[i].length) {
+        System.out.print(charData[i][j] + " ");
+        j++;
+    }
+    System.out.println();
+    i++;
+}
+
+
+
+
+
+
+
+
+
+
 
