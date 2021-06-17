@@ -91,6 +91,301 @@ for (let i = 0; i < myArray.length; i++) {
       console.log('Both loops have the number: ' + yourArray[j])  }}};
 
 
+- - - - - - - - - - - - - - - - - - - - HIGH ORDER FUNCTIONS - - - - - - - - - - - - - - - - - -
+
+- functions can be assigned to values
+--> const busy = announceThatIAmDoingImportantWork;
+--> because we dont use parentheses with the function, we are pointing at the function, not to the value it returns
+- in javascript, functions are objects, so they can have properties and methods 
+- here you can find more information about functions -> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
+
+const timeFuncRuntime = funcParameter => {     //takes a function as a parameter
+   let t1 = Date.now();
+   funcParameter();                            //calls that function
+   let t2 = Date.now();
+   return t2 - t1;
+}
+const addOneToOne = () => 1 + 1;
+timeFuncRuntime(addOneToOne);                  //passes a function as a parameter, but doesnt invoke it 
+
+
+- - - - - - - - - - - - - - - - - - - - ITERATORS - - - - - - - - - - - - - - - - - -
+
+- javascript has a few useful iterator methods that help with looping
+ 
+- foreach takes in a callback function that will be executed for each element of the array, doesnt change the array, returns undefined
+ groceries.forEach(groceryItem => console.log(groceryItem)); 
+
+- map() works like forEach, but it doesnt change the array, it returns a new one
+const bigNumbers = numbers.map(number => {
+  return number * 10; });
+  
+- filter() works like map, but its callback function should return true or false. Then it will create a new array on the varaibles that returned true
+const shortWords = words.filter(word => {
+  return word.length < 6; });
+
+- findIndex() will return the first value that evaluates to true 
+const lessThanTen = jumbledNums.findIndex(num => {
+  return num < 10; });
+  
+- reduce returns a single value after iteration, the value will be a sum of the iterated variables
+const numbers = [1, 2, 4, 10];
+const summedNums = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue}, 100)                                      // <- Second argument(optional), will be added to the sum
+console.log(summedNums); // Output: 117
+
+here you can find more about the iterators in javascript --> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods
+
+
+
+- - - - - - - - - - - - - - - - - - - - OBJECTS, GETTERS, SETTERS - - - - - - - - - - - - - - - - - -
+
+- let spaceship = {          //created an object literal that has two key-value pairs
+  'Fuel Type': 'diesel',
+  color: 'silver' };
+
+- we can access the properties with the dot notation. For example,         spaceship.color       OR       paceship['Fuel Type']
+- the brackets need to be used with functions                          --> let returnAnyProp = (objectName, propName) => objectName[propName];
+- this is how you can add a value or change it                         --> spaceship.type = 'alien';
+- here we delete the mission property                                  --> delete spaceship.mission;
+
+- const alienShip = {                                                  // here we have created a method for an object
+  invade () { 
+    console.log('i bite')}};  
+    
+ const spaceship = {                                                    //here we have a nested object, crew contains another object
+     telescope: {                                                       // access it by: spaceship.crew.captain.name
+        yearBuilt: 2018,
+        model: '91031-XLT',   },
+    crew: {
+        captain: { 
+            name: 'Sandra', 
+            degree: 'Computer Engineering', 
+            encourageTeam() { console.log('We got this!') } } }
+  
+ - functions that mutate the objects properties, change the actual object as well
+ 
+ for (let crewMember in spaceship.crew) {                               // An alternative way of looping
+  console.log(`${crewMember}: ${spaceship.crew[crewMember].name}`); }   //the loop will iterate over all elements in the object spaceship.crew
+
+- The this keyword references the calling object which provides access to the calling object’s properties.
+- arrow functions tie the this keyword to themselves, instead of the calling object, avoid using them with this!
+- javascript doesnt have built in private types, so _ character is used to show that a variable shouldn't be tampered with
+
+
+ - Getters are methods that get and return the internal properties of an object
+ - get fullName() {
+    if (this._firstName && this._lastName){                        //getters can use the objects properties using this 
+      return `${this._firstName} ${this._lastName}`; } 
+
+- setter methods reassign values of existing properties within an object. 
+-   set age(newAge){
+    if (typeof newAge === 'number'){
+      this._age = newAge; }
+- setters and getters dont need parentheses when called --> person.age
+
+FACTORY FUNCTIONS//
+- You can create factory functions that make creating objects easier, so you dont need to create object literals every time
+
+For example:
+const monsterFactory = (name, age, energySource, catchPhrase) => {             //factory function
+  return { 
+    name,
+    age, 
+    energySource,
+    scare() {
+      console.log(catchPhrase); } } };
+const ghost = monsterFactory('Ghouly', 251, 'ectoplasm', 'BOO!');                    //now we can create objects easily
+
+- using destructuring, you can easily add a key value pair to a variable
+const vampire = {
+  name: 'Dracula',
+  residence: 'Transylvania'}                    const { residence } = vampire;       //we make a variable residence and its value is transylvania
+
+
+- - - - - - - - - - - - - - - - - - - - CLASSES - - - - - - - - - - - - - - - - - -
+
+- classes are templates for objects, every time a class is run, they will execute their constructor
+class Dog {
+  constructor(name) {                //example class
+    this.name = name; } } 
+get name() {
+    return this._name; }             // an example getter
+
+const halley = new Dog('Halley')     //this is an instance, an object that contains the property names and methods of a class
+
+INHERITANCE
+class Cat extends Animal {               //extends shows that the class is a subclass of animal
+  constructor(name, usesLitter) {
+    super(name);                         //super calls the parent class's constructor, in this case it will give it the parameter name
+    this._usesLitter = usesLitter;}}     // the parentclass's constructor will then initialize it 
+
+- super needs to be called before the this keyword
+- static methods can be freely called from the class, but not from individual instances 
+    
+
+ - - - - - - - - - - - - - - - - - - - - PROMISES - - - - - - - - - - - - - - - - - -
+ 
+ - Promises are objects that represent the eventual outcome of an asynchronous operation.
+ - A promise can be pending(initial state), fulfilled(completed) or rejected(failed with an error)
+ 
+ const executorFunction = (resolve, reject) => {    //executor function that runs automatically when the constructor is called
+  if (someCondition) {
+      resolve('I resolved!');  
+  } else {
+      reject('I rejected!');}}  
+      
+const myFirstPromise = new Promise(executorFunction);      //new Promise is the constructor
+
+- resolve will set a promise from pending to fulfilled, the promise’s resolved value will be set to the argument passed into resolve()
+- reject will set the promise to rejected, rejection reason will be set to the argument passed into reject().
+- setTimeout() is a Node API that uses callback functions to schedule tasks to be performed after a delay.
+- we use .then() to make a guarantee that the promise will be settled
+- .then() takes two callback functions as arguments = handlers, which are often named onFulfilled and onRejected
+
+- setTimeout(delayedHello, 2000);   //delayedHello will be added to the line of things to do after two seconds
+
+EXAMPLE
+let prom = new Promise((resolve, reject) => {
+  let num = Math.random();
+  if (num < .5 ){
+    resolve('Yay!');
+  } else {
+    reject('Ohhh noooo!');}});
+ 
+const handleSuccess = (resolvedValue) => {            //this function will get the resolved value
+  console.log(resolvedValue);};
+const handleFailure = (rejectionReason) => {          //another handler
+  console.log(rejectionReason);};
+  
+ prom
+  .then((resolvedValue) => {                          // here we pass the success and failure handlers to then and catch
+    console.log(resolvedValue);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  }); 
+  
+                                - sometimes we need various promises that depend on each other
+                                - one promise might only run after another has completed succesfully etc.
+  
+  For example:
+  firstPromiseFunction()                                    //returns a promise
+.then((firstResolveVal) => {                                //anonymous function as a success handler
+  return secondPromiseFunction(firstResolveVal);            //we invoke the second promise with the first ones resolved value
+})
+.then((secondResolveVal) => {
+  console.log(secondResolveVal);
+});
+
+
+                                   EXAMPLE
+
+let myPromises = Promise.all([returnsPromOne(), returnsPromTwo(), returnsPromThree()]);
+ 
+myPromises
+  .then((arrayOfValues) => {
+    console.log(arrayOfValues);
+  })
+  .catch((rejectionReason) => {
+    console.log(rejectionReason);
+  });
+  
+  - promise.all will return an array of all the resolved values, if they all resolve
+  - if any of the promises fail, the method will return an error
+  
+  
+ - - - - - - - - - - - - - - - - - - - - ASYNC / AWAIT - - - - - - - - - - - - - - - - - -
+ 
+ - asyncronous functions are often declared with the keyword async and they always return a promise
+ - async function has a operator await that will stop the execution of the function until the promise resolves. 
+ - when the promise has been completed, await will return its resolved value
+ - async will return undefined, If there’s a non-promise value returned from the function, it will return a promise resolved to that value, 
+   or If a promise is returned from the function, it will simply return that promise
+ 
+ --> async function can be declared like this --> const myFunc = async () => { };
+ 
+           EXAMPLE
+ let myPromise = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Yay, I resolved!')
+    }, 1000);   } } );
+
+async function noAwait() {
+ let value = myPromise();
+ console.log(value); }
+ 
+async function yesAwait() {
+ let value = await myPromise();
+ console.log(value); 
+ 
+noAwait();                                        // Prints: Promise { <pending> }
+yesAwait();                                       // Prints: Yay, I resolved!
+
+          EXAMPLE OF DEPENDED PROMISES
+-async function asyncAwaitVersion() {
+  let firstValue = await returnsFirstPromise();               //the resolved value of the awaited promise is assigned to firstvalue
+  console.log(firstValue);
+  let secondValue = await returnsSecondPromise(firstValue);   //secondValue is assigned returnssecondpromise promise’s resolved value.
+  console.log(secondValue);
+}
+
+                                           ERRORS
+- debugging can be challenging when async has numerous await statements
+- we can use async ... try for error handling, using catch is also encouraged
+
+For example, 
+async function usingTryCatch() {
+ try {
+   let resolveValue = await asyncFunction('thing that will fail');
+   let secondValue = await secondAsyncFunction(resolveValue);
+ } catch (err) {                                                                       // Catches any errors in the try block
+   
+   console.log(err); } }
+usingTryCatch();
+
+
+async function usingPromiseCatch() {
+   let resolveValue = await asyncFunction('thing that will fail');
+}
+ 
+let rejectedPromise = usingPromiseCatch();
+rejectedPromise.catch((rejectValue) => {
+console.log(rejectValue);
+})
+                             INDEPENDENT PROMISES
+- sometimes an async function might have multiple promises that are not dependent on each other
+- waiting() can be used to wait for one promises resolving
+- concurrent() allows for multiple asynchronous operations to be run simultaneouusly
+EXAMPLE
+
+async function waiting() {
+ const firstValue = await firstAsyncThing();
+ const secondValue = await secondAsyncThing();
+ console.log(firstValue, secondValue);
+}
+ 
+async function concurrent() {
+ const firstPromise = firstAsyncThing();
+ const secondPromise = secondAsyncThing();
+console.log(await firstPromise, await secondPromise);
+}
+
+- promise.all can also be used for async ... await
+
+EXAMPLE
+- async function asyncPromAll() {
+  const resultArray = await Promise.all([asyncTask1(), asyncTask2(), asyncTask3(), asyncTask4()]);
+  for (let i = 0; i<resultArray.length; i++){
+    console.log(resultArray[i]); 
+  }
+}
+
+- we wait for all the promises to resolve and then we print all the values to the console
+- like when using concurrent, all of these promises will run at the same time
+ 
+ 
 - - - - - - - - - - - - - - - - - - - -REQUESTS- - - - - - - - - - - - - - - - - -
 
 - the most common http requests are get, post, put and delete
