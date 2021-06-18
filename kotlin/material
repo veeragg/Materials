@@ -75,6 +75,7 @@ when (letter) {                                                        //specify
 - in addition to add and remove, you can use addAll and Clear functions that will concern all of the elements
 - A empty set is created like this --> var uniqueParticipants = mutableSetOf<String>()
 - a few other built-in functions are .first(), .second() and .sum()
+- in sets there can be only one of each value
 
 - - - - - MAPS
 - maps are like objects with key-value pairs in javascript
@@ -88,3 +89,45 @@ when (letter) {                                                        //specify
 - removing a value --> nationalTrees.remove("Canada")
 
 
+
+- - - - - - - - - - - - LOOPS  - - - - - - - - - - - - -
+
+FOR LOOP 
+var num = 4
+for (i in 1..num) {
+  println("i = $i")
+}
+
+- for (i in 4 downTo 1)                // will count from 4 to 1
+- for (i in 1 until 4)                 // will count from 1 to 3
+- for (i in 1..8 step 2)               // prints 1, 3, 5, 8
+
+-iterating through a list or a set 
+for (fruit in fruitList) {
+  println("I have $fruit.") }
+  
+for ((listIndex, fruit) in fruitList.withIndex())           //this will return the item and its index
+for (setIndex in fruitSet.indices)                          // here only the index will be returned
+ 
+ ITERATING THROUGH MAPS
+for ((itemName, itemCount) in myClothes) {
+  println("I have $itemCount $itemName")  }                // this returns keys and values, first parameter is the key and second the value
+for (itemName in myClothes.keys) {                         //here is how you can go only through the keys (values work simirarly)
+
+- kotlin also supports while loops, which are similar to javas
+- when breaking from nested loops, we need labeled jump expressions
+val game = listOf("Rock", "Paper", "Scissor")
+ 
+rps@ for (p1 in game) {
+  for (p2 in game) {
+    if (p1 == "Paper") {
+      break@rps                                            // breaks out from the outer loop
+    }
+    println("$p1 vs. $p2") } } 
+    
+    
+    
+- - - - - - - - - - - - FUNCTION - - - - - - - - - - - - -
+
+- fun getSpeed(distance: Int, time: Int) {               // here we have given the funtion two variables
+- 
