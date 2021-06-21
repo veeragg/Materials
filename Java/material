@@ -30,6 +30,9 @@ public class Store {
   Store cookieShop = new Store("cookies"); //lets create an object
   
   
+  public static void main(String [ ] args)
+  
+  
   - - - - - - - - - - METHODS - - - - - - - - - - - -
   
   - In java, you can create your own methods, just like constructors
