@@ -130,4 +130,40 @@ rps@ for (p1 in game) {
 - - - - - - - - - - - - FUNCTION - - - - - - - - - - - - -
 
 - fun getSpeed(distance: Int, time: Int) {               // here we have given the funtion two variables
-- 
+- you can assign a function to a variable so you can get the result by calling the variable
+- a single expression function can be made to shorten your expression
+
+fun powerOf2(num: Int): Int {               -->             fun powerOf2(num: Int) = num * num
+  return num * num }
+ 
+- a function literal is an unnamed function that behaves like any variable would
+- there are two types of function literals: anonymous functions and lambda expressions
+
+- Anonymous:                                                       Lambda:
+val quotient = fun(num1: Int, num2: Int): Double {                  val quotient = { num1: Int, 
+  return num1 / num2 }                                              num2: Int -> num1 / num2 }
+  
+  
+  - - - - - - - - - - - - CLASSES - - - - - - - - - - - - -
+  
+  - you can create an instance of the calss --> val myCar = Car()   //myCar is the name, car is the class's name
+  - then you can call the instances properties --> println(myCar.color)
+  - a primary constructor allows you to declare properties and initialize them when calling the object
+  
+  - class Car(val year: Int, val model: String, val color: String)
+  --> val myCar = Car(2011, "Jeep", "Blue") 
+      val friendsCar = Car(2015, "Mazda", "Red")  //the instances get their own unique properties
+      
+ - you can create an init block to add more logic to your class
+ - the method will run everytime you call the instance
+ 
+ class Mascot(val name: String, val platform: String, val yearCreated: Int) {
+  var age: Int
+ 
+  init {
+    age = 2020 - yearCreated
+    println("$name is a $platform mascot and is $age years old. ") } }
+  
+
+
+
