@@ -85,3 +85,10 @@
     </section>
   </body>
 </html>
+
+
+- you can add required to an input field, that will ask the the user to fill it before submitting the form
+- you can also add minimum and maximum values 
+-for text input fields you can add minlength and maxlength
+- pattern="[0-9]{14,16}" this checks that you get a valid cardnumber
+- pattern="[a-zA-Z0-9]+" this checks that the input consists only of numbers and letters 
