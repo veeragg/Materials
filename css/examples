@@ -1,0 +1,41 @@
+-THREE WAYS OF USING CSS
+--> inline style                 <p style='color: red; font-size: 20px;'>I'm learning to code!</p>
+
+--> internal stylesheet 
+<head>
+  <title>Vacation World</title>
+  <style>
+    p {
+      color:green;
+    }
+    </style>
+</head>
+
+--> linking the css file         <link href='./style.css' rel='stylesheet'>
+
+
+
+- an universal type selector that targets all the elements 
+             *{
+             border: 1px solid red; }
+
+
+- you can choose a class element by:
+-->         <p class='brand'>Sole Shoe Company</p>
+-->         .brand { }
+
+
+p:hover {                                                      //hover is a pseudo-class, when you hover your mouse above the text 
+  background-color: lime;                                      //the backround color will turn lime
+} 
+--> other pseudo classes are :focus, :visited, :disabled, and :active
+
+
+- making text uppercase     -->       text-transform: uppercase;
+- making the text cursive   -->       font-family: cursive;
+- border to a text or img   -->       border: 1px solid red;
+- text color                -->       color:green;
+- takes the href elements   -->       [href]{    color: magenta;    }
+- takes a specific image    -->       img[src*='winter'] {                  //finds an image with 'winter' in the address
+- targets link addresses    -->       a[href*='florence'] {
+- sets a backround color    -->       background-color: aqua;
