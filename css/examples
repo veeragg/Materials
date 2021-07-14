@@ -89,5 +89,58 @@ h1,
 - width: 400px;                     //in order to center an element, the width needs to be implemented
   margin: 0 auto;                   // this sets the top and bottom margin to 0 and centers the element automatically
   
+- * {                               //like here you can reset the box-model in order to avoid sizing issues and overflowing
+  box-sizing: border-box;           // you can also set margin and padding to 0 at the start of the file, for all elements
+} 
+
+
+
+- - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - -  - - - - - - - --  -- - - -
+
+-------------POSITION 
+
+- you can change an elements default position                --> position: static   (default value)
+
+.green-box {
+  background-color: green;       
+  position: relative;              //we can position the element in relation to its default position
+  top: 50px;                       // will move the element 50px down
+  left: 120px;                     // will move the element 120px to the right
+}
+
+position: absolute;             //will place the element relative to the closest parent element (other elements will ignore it) 
+                                //you can specify the position with top, right etc. It will move when the user is scrolling
+                                
+.title {
+  position: fixed;              //you can set an element to be fixed, it wont move when scrolling, for example a navigation bar
+  top: 0px;
+  left: 0px;
+}
+
+.box-bottom {
+  position: sticky;             //the position will move while scrolling, but then sticking to a specific location               
+  top: 240px;
+}
+
+-  z-index: 1;                 //tells the depth of an element and decides which one will be layered on the website
+                               //the higher the index, lower numbers wont come on top of it 
+
+
+-------------DISPLAY
+
+- display allows making every element inline, like a, em or strong's default value
+- inline elements are wrapped in a thight box and can be directly next to each other, their height and width cannot be changed 
+
+- block-level elements take the entire width of the page by default and are the height they need to display their content 
+- these elements width can be made smaller 
+
+- inline-block combines the inline and block. They can be next to each other and their size can be changed
+
+- float: right;     //will move an element so far right as possible (left is also a value of float)
+- you can use clear to make sure the elements don't bump into each other
+
+- clear: left;      --> left side wont touch any other element (same for right) 
+--> both    --> neither side will touch anything 
+--> none    --> the element can touch all the sides  
   
                                                                             
