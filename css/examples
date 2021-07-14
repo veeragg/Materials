@@ -31,6 +31,12 @@ p:hover {                                                      //hover is a pseu
 --> other pseudo classes are :focus, :visited, :disabled, and :active
 
 
+
+h1, 
+.menu {                                                        //here you have chosen class element menu and all h1 to be a specific font
+  font-family: Georgia;
+}
+
 - making text uppercase     -->       text-transform: uppercase;
 - making the text cursive   -->       font-family: cursive;
 - border to a text or img   -->       border: 1px solid red;
@@ -41,3 +47,47 @@ p:hover {                                                      //hover is a pseu
 - sets a backround color    -->       background-color: aqua;
 - chooses special classes h1 ->       h1.special {     }
 - gets all li:s from mainlist >       .main-list li {     }
+- targeting values with id  -->       #banner {     }
+
+
+
+- - - - - - - - - - - - - -  - - - - - - -  -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+- you can change the text display by using                       -->        font-family: Helvetica
+- font size can be modified using pixels, for example            -->        font-size: 18px
+- regulating the thinness/boldness of text                       -->        font-weight: bold;     (has also value normal)
+- aligns text on the screen                                      -->        text-align: right;     (left, right, center, justify)
+- choosing color is made with these commands                     -->        color: red;
+                                                                            background-color: blue;
+- the opacity(visibility) can be changed with opacity(fading)    -->        opacity: 0.5;
+- overriding all other rules with important                      -->        color: blue !important;
+- targeting size                                                 -->        height: 18px   ->    widht: 25px  (can be 100%)
+- targeting the border (width, style color)                      -->        border: 3px solid coral;
+- curving the borders corners                                    -->        border-radius: 5px;
+- targeting the padding                                          -->        padding: 15px
+- targeting the margin (outside the border)                      -->        margin: 25px
+- setting limits to size                                         -->        min-width:300px;  ->   max-width: 500px;
+- a default value for overflowing content (visible)              -->        overflow: visible; 
+
+--> the width can be pixels or thin, thick, medium / there are 10 styles / there are 140 built-in colors
+--> you can create a circle by making height and width the same, border-radius 50%
+--> you can change the padding on all sides -> padding-top, padding-bottom, padding-right, padding-left
+--> padding: 6px 11px 4px 9px; (targets top, right, left, bottom)
+--> padding: 5px 10px 20px;    (targets top, left/right, bottom)
+--> padding: 5px 10px;         (targets top/bottom, left/right)
+--> margin can also be set for all the sides, similarly to the padding 
+--> horisontal margins add up, vertical ones collapse
+--> overflow also has values: scroll and hidden 
+
+
+- changing the elements backround 
+-> .main-banner {
+  background-image: url('images/mountains.jpg');
+  }
+  
+- width: 400px;                     //in order to center an element, the width needs to be implemented
+  margin: 0 auto;                   // this sets the top and bottom margin to 0 and centers the element automatically
+  
+  
+                                                                            
