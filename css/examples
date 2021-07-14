@@ -142,5 +142,26 @@ position: absolute;             //will place the element relative to the closest
 - clear: left;      --> left side wont touch any other element (same for right) 
 --> both    --> neither side will touch anything 
 --> none    --> the element can touch all the sides  
-  
+
+
+
+- - -- --  - - - - - - -- - - - - --  -  - - - -  - -- -  -- - - - - - - - - -- -- - - - - -- - -- -  - - -- - - - -- - - - - - - 
+
+
+- in css, colors are represented by named colors and number combinations
+
+- here you can find all the colors represented by hexadecimal numbers
+--> https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+
+- rgb colors are represented by using decimal numbers         -->          color: rgb(23, 45, 23);
+- rgb and hex colors contain the same colors. With rgb each number has a number 0-255 
+- first represents the amount of red, the second green and the last one blue
+
+- hsl means hue, saturation, lighteness        -->   color: hsl(120, 60%, 70%);
+- hue means the angle on the color wheel, saturaty represents the purity and lightness darkness
+
+-->  color: hsla(34, 100%, 50%, 0.1);        //you  can change the opacity 
+--> the last value is the alpha. (1 is opaque, 0 is transparent)
+- you can add the opacity to a rgb number and hx number aswell, with hex the opacity goes from 00 to FF
+- you can also use color: transparent
                                                                             
