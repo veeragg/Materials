@@ -39,3 +39,5 @@ p:hover {                                                      //hover is a pseu
 - takes a specific image    -->       img[src*='winter'] {                  //finds an image with 'winter' in the address
 - targets link addresses    -->       a[href*='florence'] {
 - sets a backround color    -->       background-color: aqua;
+- chooses special classes h1 ->       h1.special {     }
+- gets all li:s from mainlist >       .main-list li {     }
