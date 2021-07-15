@@ -165,3 +165,50 @@ position: absolute;             //will place the element relative to the closest
 - you can add the opacity to a rgb number and hx number aswell, with hex the opacity goes from 00 to FF
 - you can also use color: transparent
                                                                             
+
+
+- - -- --  - - - - - - -- - - - - --  -  - - - -  - -- -  -- - - - - - - - - -- -- - - - - -- - -- -  - - -- - - - -- - - - - - - 
+
+
+- css has different kind of fonts, some are supported on most web sites
+- Here you can find all the fonts available for css   -->    https://www.cssfontstack.com/
+
+h1 {                                                      //this is a font stack, first the browser will try to use caslon
+  font-family: Caslon, Georgia, 'Times New Roman';        //if it is not supported by the browser, then georgia and then times new roman
+}
+
+- there are serif and sans-serif fonts. Serif fonts have extra details on the main strokes of the letters
+- you can add serif or sans-serif as keywords at tthe end of the stack. In case none of the fonts are available, some serif or else font will be used to display the content
+
+
+-   font-weight: bold; 
+--> here you can control how thin or bold the text appears. Other values are normal, bolder and lighter.
+--> you can also use numerical values from 1 to 1000(700=bold), but this feature is not available for all fonts.
+
+
+- font-style: italic;                 --> here the font has been changed to italics. The default value for font-style is normal. 
+- text-transform: uppercase;          --> you can change the text either to uppercase or lowercase.
+- letter-spacing: 2px;                --> each character will be 2 pixels apart from each other, you can use px or em
+- word-spacing: 0.3em;                --> determines the space between words, em is recommended for words, but you can also use pixels
+- line-height: 1.4;                   --> changes the height between the lines, values can be 1.4, 5%, em or px
+
+
+- remember text_align above!!
+- you can link free fonts from google etc. to your file using the <link> element
+- another possibility is to use bought fonts that you link to the stylesheet using a relative path. (You need to host the files alongside your website)
+
+
+- you can choose a free font from google fonts, for example and link it to your stylsheet with the <link> (add it to your <head>)
+-->  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+--> after you need to specify the selected font in the stylesheet, like done above
+
+
+- using @font-face you first need to download the wanted font to your computer. WOFF2 is the most progressive file type.
+
+@font-face {
+  font-family: 'MyParagraphFont';                                //custom font name 
+  src: url('fonts/Roboto.woff2') format('woff2'),                // fonts linked through a relative link
+       url('fonts/Roboto.woff') format('woff'),
+       url('fonts/Roboto.ttf') format('truetype');
+}
+--> after linking the fonts, you need to specify them by using: font-family like stated before
