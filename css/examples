@@ -212,3 +212,12 @@ h1 {                                                      //this is a font stack
        url('fonts/Roboto.ttf') format('truetype');
 }
 --> after linking the fonts, you need to specify them by using: font-family like stated before
+
+
+
+
+_ _ _ _ _ _ __ _ _ _ _ _ _ _ _ __ _ __ _ _ _ __ _ __ _ _ __ _ _  __INTERMEDIATE
+
+div.container {                                 - will make container classes flex containers and their childer flex items, the div will remain on a block level
+  display: flex;                                - the child elements will not start on a new line 
+- 
